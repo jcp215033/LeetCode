@@ -9,15 +9,11 @@ var minMaxDifference = function(num) {
     let max = -Infinity;
     for (let i = 0; i < str.length; i++) {
         for (let j = 0; j <= 9; j++){
-            const regex = new RegExp(str[i], "g");
-            let temp = str.replace(regex, j);
-            if (Number(temp) < min) min = +temp
-            if (Number(temp) > max) max = +temp
+            let temp = str.replace(new RegExp(str[i], "g"), j);
+            min = +temp < min ? +temp : min;
+            max = +temp > max ? +temp : max;
         }
-        console.log(max, min)
-        if (max - min > maxDiff) {
-            maxDiff = max - min
-        }
+        maxDiff = max - min > maxDiff ? max - min : maxDiff;
     }
     return maxDiff;
 };
