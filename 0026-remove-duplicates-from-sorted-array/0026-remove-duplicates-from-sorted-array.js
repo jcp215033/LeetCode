@@ -3,19 +3,12 @@
  * @return {number}
  */
 var removeDuplicates = function(nums) {
-    let hash = {};
-    let count = 0
-    for (let n of nums) {
-        hash[n] = (hash[n] || 0) + 1
-        if (hash[n] === 1) count++
-    }
-    for (let i = 0; i < nums.length; i++) {
-        let n = nums[i]
-        if (hash[n] > 1) {
-            nums[i] = undefined;
-            hash[n]--;
+    let l = 1;
+    for (let r = 1; r < nums.length; r++) {
+        if (nums[r] !== nums[r - 1]) {
+            nums[l] = nums[r]
+            l++
         }
     }
-    nums.sort((a,b) => a - b);
-    return count
+    return l
 };
