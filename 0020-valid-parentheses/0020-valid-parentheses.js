@@ -13,6 +13,5 @@ var isValid = function(s) {
             return false
         }
     }
-    console.log(stack)
     return stack.length > 0 ? false : true;
 };
