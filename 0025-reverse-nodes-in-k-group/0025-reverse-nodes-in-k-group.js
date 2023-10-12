@@ -35,14 +35,11 @@ var reverseKGroup = function(head, k) {
     dummy.next = head
     let s = dummy;
     while(true) {
-                console.log(s)
         reverseHelper(s, k)
-                console.log(s)
         for (let i = 0; i < k; i++) {
             if (s.next) {
                 s = s.next
             } else {
-                console.log(s)
                 return dummy.next
             }
         }
