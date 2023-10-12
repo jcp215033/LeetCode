@@ -15,20 +15,17 @@ var addTwoNumbers = function(l1, l2) {
     let head = ans
     let rem = 0;
     while (l1 || l2) {
-        let node;
-        if (l1 && l2) {
-            node = l1.val + l2.val + rem;
+        let node = rem;
+        if (l1) {
+            node += l1.val
             l1 = l1.next
-            l2 = l2.next
-        } else if (l1) {
-            node = l1.val + rem;
-            l1 = l1.next
-        } else {
-            node = l2.val + rem;
-            l2 = l2.next
         }
+        if (l2) {
+            node += l2.val
+            l2 = l2.next
+        } 
         ans.next = new ListNode(node % 10)
-        rem = (node / 10) >> 0
+        rem = Math.floor(node / 10)
         ans = ans.next
     }
     if (rem > 0) ans.next = new ListNode(rem)
