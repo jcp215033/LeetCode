@@ -13,8 +13,7 @@ class Solution:
             else:
                 return
         
-        curr = l
-        prev = r
+        curr, prev = l, r
         while curr != r:
             next = curr.next
             curr.next = prev
