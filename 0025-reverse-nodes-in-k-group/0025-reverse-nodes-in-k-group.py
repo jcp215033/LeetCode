@@ -4,7 +4,7 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def reverseHelper(self, s: ListNode, k: int):
+    def reverseHelper(self, s: ListNode, k: int) -> Optional[ListNode]:
         l = s.next
         r = l
         for _ in range(k):
@@ -20,17 +20,17 @@ class Solution:
             prev = curr
             curr = next
         s.next = prev
+        return l
 
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         dummy = ListNode()
         dummy.next = head
         s = dummy
         while True:
-            self.reverseHelper(s, k)
-            for _ in range(k):
-                if s.next:
-                    s = s.next
-                else:
-                    return dummy.next
+            tail = self.reverseHelper(s, k)
+            if tail:
+                s = tail
+            else:
+                return dummy.next
 
         
