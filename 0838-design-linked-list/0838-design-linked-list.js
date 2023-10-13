@@ -66,11 +66,7 @@ MyLinkedList.prototype.addAtIndex = function(index, val) {
         i++
     }
     if (i + 1 === index && curr) {
-        // if (curr.next) {
-            curr.next = new Node (val, curr.next)
-        // } else {
-            // curr.next = new Node(val)
-        // }
+        curr.next = new Node (val, curr.next)
     }
     return
 };
