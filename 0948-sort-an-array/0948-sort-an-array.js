@@ -2,6 +2,8 @@
  * @param {number[]} nums
  * @return {number[]}
  */
+
+ // Insertion Sort
 var sortArray = function(nums) {
     for (let i = 1; i < nums.length; i++) {
         let j = i - 1
