@@ -2,11 +2,16 @@
  * @param {string} s
  * @return {number}
  */
-var countGoodSubstrings = function(s) {
-    let count = 0
-    for (let i = 0; i < s.length - 2; i++) {
-        sub = s.substring(i, i + 3)
-        if (sub[0] !== sub[1] && sub[1] !== sub[2] && sub[2] !== sub[0]) count++
+var countGoodSubstrings = function(string) {
+    let count = 0;
+  for (let i = 0; i < string.length - 2; i++) {
+    if (
+      string[i] !== string[i + 1] &&
+      string[i + 1] !== string[i + 2] &&
+      string[i] !== string[i + 2]
+    ) {
+      count++;
     }
-    return count
+  }
+  return count;
 };
