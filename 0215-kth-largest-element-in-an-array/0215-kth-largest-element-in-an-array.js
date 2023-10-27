@@ -4,32 +4,40 @@
  * @return {number}
  */
 var findKthLargest = function(nums, k) {
-    function quickSort(arr, l, r) {
-        if (r - l + 1 <= 1) {
-            return arr
-        }
-
-        // let randIdx = l + Math.floor(Math.random() * (r - l + 1));
-
-        let left = l, pivot = arr[r]
-
-        for (let i = l; i < r; i++) {
-            if (arr[i] > pivot) {
-                // let tmp = arr[i]
-                // arr[i] = arr[left]
-                // arr[left] = tmp
-                [arr[i], arr[left]] = [arr[left], arr[i]]
-                left++
+    function merge(arr, l, m, r) {
+        let left = arr.slice(l, m + 1)
+        let right = arr.slice(m + 1, r + 1)
+        let i = l, j = 0, k = 0
+        while (j < left.length && k < right.length) {
+            if (left[j] >= right[k]) {
+                arr[i] = left[j]
+                j++
+            } else {
+                arr[i] = right[k]
+                k++
             }
+            i++
         }
-        // arr[r] = arr[left]
-        // arr[left] = pivot
-        [arr[r], arr[left]] = [arr[left], arr[r]]
+        while (j < left.length) {
+            arr[i] = left[j]
+            j++
+            i++
+        }
+        while(k < right.length) {
+            arr[i] = right[k]
+            k++
+            i++
+        }
+    }
+    function mergeSort(arr, l, r) {
+        if (l === r) return arr
 
-        quickSort(arr, l, left - 1)
-        quickSort(arr, left + 1, r)
+        let m = Math.floor((l + r) / 2)
+        mergeSort(arr, l, m)
+        mergeSort(arr, m + 1, r)
+        merge(arr, l, m, r)
+        return arr
     }
 
-    quickSort(nums, 0, nums.length - 1)
-    return nums[k - 1]
+    return mergeSort(nums, 0, nums.length + 1)[k - 1]
 };
