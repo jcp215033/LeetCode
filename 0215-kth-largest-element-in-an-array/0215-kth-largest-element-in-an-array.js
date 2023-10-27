@@ -15,16 +15,16 @@ var findKthLargest = function(nums, k) {
 
         for (let i = l; i < r; i++) {
             if (arr[i] > pivot) {
-                let tmp = arr[i]
-                arr[i] = arr[left]
-                arr[left] = tmp
-                // [arr[i], arr[left]] = [arr[left], arr[i]]
+                // let tmp = arr[i]
+                // arr[i] = arr[left]
+                // arr[left] = tmp
+                [arr[i], arr[left]] = [arr[left], arr[i]]
                 left++
             }
         }
-        arr[r] = arr[left]
-        arr[left] = pivot
-        // [arr[r], arr[left]] = [arr[left], arr[r]]
+        // arr[r] = arr[left]
+        // arr[left] = pivot
+        [arr[r], arr[left]] = [arr[left], arr[r]]
 
         quickSort(arr, l, left - 1)
         quickSort(arr, left + 1, r)
