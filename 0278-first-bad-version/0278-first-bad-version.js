@@ -18,13 +18,15 @@ var solution = function(isBadVersion) {
      * @return {integer} The first bad version
      */
     return function(n) {
-        let l = 1, r = n, m = n;
-        while (l <= r) {
-            m = Math.floor((l + r) / 2)
-            if (!isBadVersion(m - 1) && isBadVersion(m)) return m
-            if (isBadVersion(m)) r = m - 1
-            else l = m + 1
+        let l = 1, r = n;
+        while (l < r) {
+            let m = Math.floor((l + r) / 2);
+            if (isBadVersion(m)) {
+                r = m;
+            } else {
+                l = m + 1;
+            }
         }
-        return m
+        return l;
     };
 };
