@@ -5,7 +5,7 @@
  */
 var minEatingSpeed = function(piles, h) {
 
-    if (piles.length === 1) return Math.ceil(piles[0] / h)
+    // if (piles.length === 1) return Math.ceil(piles[0] / h)
 
     let L = 1, R = Math.max(...piles);
     
