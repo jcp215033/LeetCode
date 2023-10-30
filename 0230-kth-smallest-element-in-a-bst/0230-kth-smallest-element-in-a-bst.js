@@ -17,7 +17,7 @@ var kthSmallest = function(root, k) {
         if (!root) return
         inOrder(root.left)
         res.push(root.val)
-        if(res.length === k) return
+        // if(res.length === k) return
         inOrder(root.right)
     }
     inOrder(root)
