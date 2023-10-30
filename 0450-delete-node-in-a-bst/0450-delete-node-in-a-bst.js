@@ -11,26 +11,33 @@
  * @param {number} key
  * @return {TreeNode}
  */
-var minNode = function(root) {
-    let curr = root;
-    while (curr && curr.left) {
-        curr = curr.left
-    }
-    return curr.val
+function findMinValue(node) {
+  while (node.left !== null) {
+    node = node.left;
+  }
+    
+  return node.val;
 }
-var deleteNode = function(root, val) {
-    if (!root) return null
+var deleteNode = function (root, key) {
+  if (root == null) {
+    return null;
+  }
 
-    if (val > root.val) root.right = deleteNode(root.right, val)
-    else if (val < root.val) root.left = deleteNode(root.left, val)
-    else {
-        if (!root.left) return root.right
-        else if (!root.right) return root.left
-        else {
-            let minVal = minNode(root.right)
-            root.val = minVal
-            root.right = deleteNode(root.right, minVal)
-        }
+  if (key < root.val) {
+    root.left = deleteNode(root.left, key);
+  } else if (key > root.val) {
+    root.right = deleteNode(root.right, key);
+  } else {
+    if (root.left === null) {
+      return root.right;
+    } else if (root.right === null) {
+      return root.left;
     }
-    return root
+
+    root.val = findMinValue(root.right);
+
+    root.right=deleteNode(root.right,root.val)
+
+  }
+  return root
 };
