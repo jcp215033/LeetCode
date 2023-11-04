@@ -11,24 +11,9 @@
  * @return {number[]}
  */
 var rightSideView = function(root) {
-    // let res = []
-    // if (!root) return res
-    // let deque = []
-    // deque.push(root)
-    // while (deque.length) {
-    //     let len = deque.length
-    //     for (let i = 0; i < len; i++) {
-    //         let curr = deque.shift()
-    //         res.push(curr.val)
-    //         if (!curr.right && curr.left) deque.push(curr.left)
-    //         else if (curr.right) deque.push(curr.right)
-    //     }
-    // }
-    // return res
     let res = []
     if (!root) return res
-    let deque = []
-    deque.push(root)
+    let deque = [root]
     while (deque.length) {
         let len = deque.length
         let lvl;
