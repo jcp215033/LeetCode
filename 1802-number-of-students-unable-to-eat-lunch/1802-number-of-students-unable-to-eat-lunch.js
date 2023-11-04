@@ -47,15 +47,14 @@ class NewQueue {
 
 var countStudents = function(students, sandwiches) {
     let queue = new NewQueue();
-    let stack = new NewQueue();
     for (let student of students) queue.enqueue(student);
-    for (let sandwich of sandwiches) stack.enqueue(sandwich);
+    sandwiches = sandwiches.reverse()
 
     let count = 0;
-    while (!queue.isEmpty() || !stack.isEmpty()) {
-        if (queue.peek() === stack.peek()) {
+    while (!queue.isEmpty() || sandwiches.length) {
+        if (queue.peek() === sandwiches[sandwiches.length - 1]) {
             queue.dequeue();
-            stack.dequeue();
+            sandwiches.pop();
             count = 0;
         } else {
             queue.enqueue(queue.dequeue())
