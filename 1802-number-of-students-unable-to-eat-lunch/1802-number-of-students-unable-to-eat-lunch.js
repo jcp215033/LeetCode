@@ -51,7 +51,7 @@ var countStudents = function(students, sandwiches) {
     sandwiches = sandwiches.reverse()
 
     let count = 0;
-    while (!queue.isEmpty() || sandwiches.length) {
+    while (sandwiches.length) {
         if (queue.peek() === sandwiches[sandwiches.length - 1]) {
             queue.dequeue();
             sandwiches.pop();
