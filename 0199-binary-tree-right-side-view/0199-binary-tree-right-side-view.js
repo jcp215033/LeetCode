@@ -34,11 +34,9 @@ var rightSideView = function(root) {
         let lvl;
         for (let i = 0; i < len; i++) {
             let curr = deque.shift()
-            if (curr) {
-                lvl = curr.val
+            lvl = curr.val
             if (curr.left) deque.push(curr.left)
             if (curr.right) deque.push(curr.right)
-            }
         }
         res.push(lvl)
     }
