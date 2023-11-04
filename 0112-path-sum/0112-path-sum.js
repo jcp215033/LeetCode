@@ -13,21 +13,11 @@
  */
 
 var hasPathSum = function(root, targetSum) {
-    // let sum = 0
-    function dp (root, sum) {
+    function dfs (root, sum) {
         if (!root) return false
         sum += root.val;
         if (!root.left && !root.right) return sum === targetSum
-        return dp(root.left, sum) || dp(root.right, sum)
-        if (root.left) {
-            if (dp(root.left)) return true
-            else sum -= root.left.val
-        }
-        if (root.right) {
-            if (dp(root.right)) return true
-            else sum -= root.right.val
-        }
-        return false
+        return dfs(root.left, sum) || dfs(root.right, sum)
     }
-    return dp(root, 0)
+    return dfs(root, 0)
 };
