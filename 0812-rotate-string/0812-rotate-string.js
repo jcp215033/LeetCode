@@ -4,8 +4,5 @@
  * @return {boolean}
  */
 var rotateString = function(s, goal) {
-    if (s.length !== goal.length) {
-        return false;
-    }
-    return (s + s).indexOf(goal) !== -1;
+    return s.length == goal.length && (s + s).search(goal) >= 0;
 };
