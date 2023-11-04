@@ -59,9 +59,8 @@ var countStudents = function(students, sandwiches) {
         } else {
             queue.enqueue(queue.dequeue())
             count++
+            if (count === queue.length) return count
         }
-
-        if (count === queue.length) return count
     }
     return 0
 };
