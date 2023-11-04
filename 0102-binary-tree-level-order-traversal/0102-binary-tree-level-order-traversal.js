@@ -25,6 +25,5 @@ var levelOrder = function(root) {
         }
         res.push(arr)
     }
-    console.log(res)
     return res
 };
